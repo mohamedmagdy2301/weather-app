@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/screens/HomePage/taps/forecast_taps.dart';
 import 'package:weather_app/screens/HomePage/taps/today_tap.dart';
 
 class HomePage extends StatelessWidget {
@@ -40,7 +41,7 @@ class HomePage extends StatelessWidget {
         body: const TabBarView(
           children: [
             TodayTap(),
-            Center(child: Text('Forecast')),
+            ForecastTaps(),
             Center(child: Text('Precipitation')),
             Center(child: Text('Radar Sun & Moon')),
           ],
