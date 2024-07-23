@@ -1,184 +1,124 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/methods/constant.dart';
+import 'package:weather_app/methods/function.dart';
+import 'package:weather_app/models/weather_model.dart';
+import 'package:weather_app/widgets/HomePage/today_taps_widgets/day_info_today_tap_row_widget.dart';
 
 class NextDaysTodayTapWidget extends StatelessWidget {
-  const NextDaysTodayTapWidget({
-    super.key,
-  });
-
+  const NextDaysTodayTapWidget({super.key, required this.snapshot});
+  final WeatherModel snapshot;
+// ExpansionTile
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      height: 300,
-      width: double.infinity,
-      decoration: const BoxDecoration(
-        color: Color.fromARGB(156, 75, 75, 75),
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-      ),
-      alignment: Alignment.center,
-      child: const Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                "Today",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 255, 255, 255),
-                ),
-              ),
-              Image(
-                image: AssetImage("assets/Bitmap.png"),
-                height: 60,
-                width: 60,
-              ),
-              Text(
-                "H: 30°C",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                "L: 20°C",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
+    return Expanded(
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        width: double.infinity,
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(20)),
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: KgradientColoeList,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                "Friday",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 255, 255, 255),
-                ),
+        ),
+        alignment: Alignment.center,
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.only(top: 20, right: 0),
+              child: const Row(
+                children: [
+                  Spacer(flex: 17),
+                  Text(
+                    "HIGH ",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: Color.fromARGB(255, 172, 172, 172),
+                    ),
+                  ),
+                  Text(
+                    " | ",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: Color.fromARGB(255, 172, 172, 172),
+                    ),
+                  ),
+                  Text(
+                    " LOW",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: Color.fromARGB(255, 172, 172, 172),
+                    ),
+                  ),
+                  Spacer(flex: 1),
+                ],
               ),
-              Image(
-                image: AssetImage("assets/Bitmap.png"),
-                height: 60,
-                width: 60,
+            ),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: snapshot.forecastDays.length,
+              itemBuilder: (context, index) {
+                return DayInfoTodayTapRowWidget(
+                  snapshot: snapshot,
+                  day: getDayOfWeek(snapshot.forecastDays[index].date)
+                      .toString(),
+                  image: snapshot.forecastDays[index].conditionIcon,
+                  maxTemp: snapshot.forecastDays[index].maxTempC
+                      .toString()
+                      .substring(0, 2),
+                  minTemp: snapshot.forecastDays[index].minTempC
+                      .toString()
+                      .substring(0, 2),
+                );
+              },
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20,
               ),
-              Text(
-                "H: 30°C",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
+              child: const Row(
+                children: [
+                  Text(
+                    "Show more",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      color: Color.fromARGB(255, 172, 172, 172),
+                    ),
+                  ),
+                  Icon(
+                    Icons.keyboard_arrow_down_outlined,
+                    color: Color.fromARGB(255, 172, 172, 172),
+                    size: 30,
+                  ),
+                  Spacer(flex: 1),
+                  Text(
+                    "F° / ",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      color: Color.fromARGB(255, 172, 172, 172),
+                    ),
+                  ),
+                  Text(
+                    "C°",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      color: Color.fromARGB(255, 4, 221, 242),
+                    ),
+                  ),
+                ],
               ),
-              Text(
-                "L: 20°C",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                "Saturday",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 255, 255, 255),
-                ),
-              ),
-              Image(
-                image: AssetImage("assets/Bitmap.png"),
-                height: 60,
-                width: 60,
-              ),
-              Text(
-                "H: 30°C",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                "L: 20°C",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                "Sunday",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 255, 255, 255),
-                ),
-              ),
-              Image(
-                image: AssetImage("assets/Bitmap.png"),
-                height: 60,
-                width: 60,
-              ),
-              Text(
-                "H: 30°C",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                "L: 20°C",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                "Monday",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 255, 255, 255),
-                ),
-              ),
-              Image(
-                image: AssetImage("assets/Bitmap.png"),
-                height: 60,
-                width: 60,
-              ),
-              Text(
-                "H: 30°C",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                "L: 20°C",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }

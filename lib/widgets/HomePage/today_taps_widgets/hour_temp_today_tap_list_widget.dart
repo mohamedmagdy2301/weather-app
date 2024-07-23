@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/models/weather_model.dart';
 
 class HourTempTodayTapListWidget extends StatefulWidget {
-  const HourTempTodayTapListWidget({super.key});
-
+  const HourTempTodayTapListWidget({super.key, required this.snapshot});
+  final WeatherModel snapshot;
   @override
   State<HourTempTodayTapListWidget> createState() =>
       _HourTempTodayTapListWidgetState();
@@ -10,14 +11,15 @@ class HourTempTodayTapListWidget extends StatefulWidget {
 
 class _HourTempTodayTapListWidgetState
     extends State<HourTempTodayTapListWidget> {
-  int _selectedIndex = 0; // Initially, no item is selected
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       height: 110,
+      margin: const EdgeInsets.symmetric(horizontal: 10),
       child: ListView.builder(
-        itemCount: 10,
+        itemCount: widget.snapshot.forecastDays[0].hourly.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => GestureDetector(
           onTap: () {
@@ -27,6 +29,9 @@ class _HourTempTodayTapListWidgetState
           },
           child: HourTempTodayTapCardWidget(
             isSelected: _selectedIndex == index,
+            snapshot: widget.snapshot,
+            index: index,
+            marginVertical: const EdgeInsets.symmetric(horizontal: 5),
           ),
         ),
       ),
@@ -37,54 +42,61 @@ class _HourTempTodayTapListWidgetState
 class HourTempTodayTapCardWidget extends StatelessWidget {
   final bool isSelected;
 
-  const HourTempTodayTapCardWidget({
-    super.key,
-    required this.isSelected,
-  });
+  const HourTempTodayTapCardWidget(
+      {super.key,
+      required this.isSelected,
+      required this.snapshot,
+      required this.index,
+      required this.marginVertical});
+  final WeatherModel snapshot;
+  final int index;
+  final EdgeInsets marginVertical;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 10),
-      padding: const EdgeInsets.all(8),
-      width: 49,
+      margin: marginVertical,
+      padding: const EdgeInsets.all(10),
+      width: 51,
       decoration: BoxDecoration(
-        color: isSelected
-            ? Colors.grey // Color when selected
-            : const Color.fromARGB(156, 159, 159, 159), // Default color
-        borderRadius: const BorderRadius.all(Radius.circular(50)),
-        border: BorderDirectional(
-          bottom: BorderSide(
-            color: isSelected
-                ? const Color.fromARGB(255, 0, 0, 0) // Color when selected
-                : const Color.fromARGB(255, 255, 255, 255),
-            width: 2,
-          ),
-        ),
-      ),
+          color: !isSelected
+              ? const Color.fromARGB(45, 0, 0, 0)
+              : const Color.fromARGB(58, 255, 255, 255),
+          borderRadius: const BorderRadius.all(Radius.circular(50)),
+          border: !isSelected
+              ? null
+              : Border.all(color: const Color.fromARGB(255, 255, 255, 255))),
       alignment: Alignment.center,
-      child: const Column(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text(
-            "01:44",
+            index == 0
+                ? "Now"
+                : snapshot.forecastDays[0].hourly[index].time
+                    .substring(12, 16)
+                    .toString(),
             style: TextStyle(
-              fontSize: 11,
+              fontSize: 10,
               fontWeight: FontWeight.w600,
-              color: Color.fromARGB(255, 201, 201, 201),
+              color: isSelected
+                  ? const Color.fromARGB(255, 255, 255, 255)
+                  : const Color.fromARGB(142, 255, 255, 255),
             ),
           ),
-          Image(
-            image: AssetImage("assets/Bitmap.png"),
-            height: 50,
-            width: 50,
-            fit: BoxFit.cover,
+          const Image(
+            image: AssetImage("assets/Group.png"),
+            height: 32,
+            width: 30,
+            fit: BoxFit.fill,
             alignment: Alignment.center,
           ),
           Text(
-            "30°C",
-            style: TextStyle(
-              fontSize: 12,
+            index == 0
+                ? "${snapshot.tempC.toString().substring(0, 2)}°"
+                : "${snapshot.forecastDays[0].hourly[index].tempC.toString().substring(0, 2)}°",
+            style: const TextStyle(
+              fontSize: 11,
               fontWeight: FontWeight.w600,
               color: Colors.white,
             ),

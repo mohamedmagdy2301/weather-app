@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/widgets/HomePage/today_taps_widgets/date_today_tap_widget.dart';
-import 'package:weather_app/widgets/HomePage/today_taps_widgets/icon_and_temp_today_tap_widget.dart';
-import 'package:weather_app/widgets/HomePage/today_taps_widgets/next_days_today_tap_widget.dart';
 
 class ForecastTaps extends StatelessWidget {
   const ForecastTaps({super.key});
@@ -11,8 +8,8 @@ class ForecastTaps extends StatelessWidget {
     return CustomScrollView(
       physics: const BouncingScrollPhysics(),
       slivers: [
-        const SliverToBoxAdapter(child: DateTodayTapWidget()),
-        const SliverToBoxAdapter(child: IconAndTempTodayTapWidget()),
+        // const SliverToBoxAdapter(child: DateTodayTapWidget()),
+        // const SliverToBoxAdapter(child: IconAndTempTodayTapWidget()),
         SliverToBoxAdapter(
           child: SizedBox(
             height: 100,
@@ -40,7 +37,7 @@ class ForecastTaps extends StatelessWidget {
             ),
           ),
         ),
-        const SliverToBoxAdapter(child: NextDaysTodayTapWidget()),
+        // const SliverToBoxAdapter(child: NextDaysTodayTapWidget()),
       ],
     );
   }
