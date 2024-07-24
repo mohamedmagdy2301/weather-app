@@ -28,7 +28,7 @@ class _DayInfoTodayTapRowWidgetState extends State<DayInfoTodayTapRowWidget> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
       child: ExpansionTile(
-        backgroundColor: const Color.fromRGBO(72, 75, 91, 1),
+        backgroundColor: const Color.fromARGB(188, 75, 75, 77),
         iconColor: Colors.white,
         collapsedIconColor: const Color.fromARGB(255, 168, 168, 168),
         textColor: Colors.white,
@@ -53,9 +53,9 @@ class _DayInfoTodayTapRowWidgetState extends State<DayInfoTodayTapRowWidget> {
             const Image(
               image:
                   // NetworkImage(widget.image),
-                  AssetImage("assets/Bitmap.png"),
-              height: 60,
-              width: 60,
+                  AssetImage("assets/Group.png"),
+              height: 50,
+              width: 50,
             ),
             const Spacer(),
             Text(
@@ -82,8 +82,7 @@ class _DayInfoTodayTapRowWidgetState extends State<DayInfoTodayTapRowWidget> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color.fromRGBO(72, 75, 91, 1),
-                  // Color.fromRGBO(46, 48, 58, 1),
+                  Color.fromARGB(71, 75, 75, 77),
                   Color.fromRGBO(21, 22, 26, 1),
                 ],
               ),

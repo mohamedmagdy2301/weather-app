@@ -23,8 +23,10 @@ class WelcomeWidget extends StatelessWidget {
             padding: const EdgeInsets.only(
               top: 80,
             ),
-            child: Image.asset(splashModel.image,
-                height: 300, width: 260, fit: BoxFit.cover),
+            child: Center(
+              child: Image.asset(splashModel.image,
+                  height: 300, width: 260, fit: BoxFit.cover),
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

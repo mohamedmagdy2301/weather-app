@@ -10,9 +10,9 @@ class DateTodayTapWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        margin: const EdgeInsets.only(top: 10),
-        height: 34,
-        width: 150,
+        margin: const EdgeInsets.only(top: 10, bottom: 10),
+        height: 30,
+        width: 120,
         decoration: const BoxDecoration(
           color: Color.fromRGBO(50, 51, 62, 1),
           borderRadius: BorderRadius.all(Radius.circular(30)),
