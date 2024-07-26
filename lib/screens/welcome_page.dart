@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/models/splash_model.dart';
-import 'package:weather_app/screens/request_api_page.dart';
+import 'package:weather_app/screens/HomePage/home_page.dart';
 import 'package:weather_app/widgets/welcome_widgets/welcome_widget.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -78,7 +78,7 @@ class _WelcomePageState extends State<WelcomePage> {
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
-              builder: (context) => const RequestApiPage(),
+              builder: (context) => const HomePage(),
             ),
             (route) => false);
       }

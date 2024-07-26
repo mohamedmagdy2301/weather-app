@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/cubit/cubit/get_weather_cubit.dart';
 import 'package:weather_app/models/weather_model.dart';
 import 'package:weather_app/widgets/HomePage/today_taps_widgets/air_quality_today_tap_widegt.dart';
 import 'package:weather_app/widgets/HomePage/today_taps_widgets/date_today_tap_widget.dart';
@@ -10,39 +12,29 @@ import 'package:weather_app/widgets/HomePage/today_taps_widgets/status_today_tap
 import 'package:weather_app/widgets/HomePage/today_taps_widgets/sun_and_moon_today_tap_widegt.dart';
 
 class TodayTap extends StatelessWidget {
-  const TodayTap({super.key, required this.snapshot});
-  final WeatherModel snapshot;
+  const TodayTap({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomRight,
-          colors: [
-            Color.fromRGBO(72, 75, 91, 1),
-            Color.fromRGBO(44, 45, 53, 1),
-          ],
-        ),
-      ),
-      child: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
-        slivers: [
-          SliverToBoxAdapter(child: DateTodayTapWidget(snapshot: snapshot)),
-          SliverToBoxAdapter(
-              child: IconAndTempTodayTapWidget(snapshot: snapshot)),
-          SliverToBoxAdapter(child: StatusTodayTapWidget(snapshot: snapshot)),
-          SliverToBoxAdapter(
-              child: HourTempTodayTapListWidget(snapshot: snapshot)),
-          SliverToBoxAdapter(child: NextDaysTodayTapWidget(snapshot: snapshot)),
-          SliverToBoxAdapter(child: DetailsTodayTapWidget(snapshot: snapshot)),
-          SliverToBoxAdapter(
-              child: AirQualityTodayTapWidget(snapshot: snapshot)),
-          SliverToBoxAdapter(
-              child: SunAndMoonTodayTapWidget(snapshot: snapshot)),
-        ],
-      ),
+    var weatherModel = BlocProvider.of<GetWeatherCubit>(context).weatherModel;
+    return CustomScrollView(
+      physics: const BouncingScrollPhysics(),
+      slivers: [
+        SliverToBoxAdapter(child: DateTodayTapWidget(snapshot: weatherModel)),
+        SliverToBoxAdapter(
+            child: IconAndTempTodayTapWidget(snapshot: weatherModel)),
+        SliverToBoxAdapter(child: StatusTodayTapWidget(snapshot: weatherModel)),
+        SliverToBoxAdapter(
+            child: HourTempTodayTapListWidget(snapshot: weatherModel)),
+        SliverToBoxAdapter(
+            child: NextDaysTodayTapWidget(snapshot: weatherModel)),
+        SliverToBoxAdapter(
+            child: DetailsTodayTapWidget(snapshot: weatherModel)),
+        SliverToBoxAdapter(
+            child: AirQualityTodayTapWidget(snapshot: weatherModel)),
+        SliverToBoxAdapter(
+            child: SunAndMoonTodayTapWidget(snapshot: weatherModel)),
+      ],
     );
   }
 }

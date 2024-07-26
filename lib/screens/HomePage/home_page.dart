@@ -1,63 +1,110 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/models/weather_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/cubit/cubit/get_weather_cubit.dart';
 import 'package:weather_app/screens/HomePage/forecast_taps.dart';
 import 'package:weather_app/screens/HomePage/precipitation_taps.dart';
 import 'package:weather_app/screens/HomePage/today_tap.dart';
+import 'package:weather_app/screens/SearchPage/search_city.dart';
+import 'package:weather_app/widgets/HomePage/tapbar_home_page_build.dart';
+import 'package:weather_app/widgets/SearchPage/error_message_widget_build.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
     super.key,
-    required this.snapshot,
   });
-
-  final WeatherModel snapshot;
 
   @override
   Widget build(BuildContext context) {
+    var getWeatherCubit = BlocProvider.of<GetWeatherCubit>(context);
     return DefaultTabController(
-      length: 4,
-      child: Scaffold(
-        drawer: const Drawer(),
-        appBar: AppBar(
-          iconTheme: const IconThemeData(color: Colors.white),
-          backgroundColor: const Color.fromRGBO(72, 75, 91, 1),
-          centerTitle: true,
-          title: Text(
-            snapshot.location,
-            style: const TextStyle(
-              fontSize: 18,
-              color: Colors.white,
-            ),
-          ),
-          actions: const [Icon(Icons.search)],
-          bottom: const TabBar(
-            isScrollable: true,
-            tabAlignment: TabAlignment.center,
-            labelColor: Colors.white,
-            indicatorColor: Colors.white,
-            indicatorWeight: .07,
-            unselectedLabelColor: Color.fromARGB(255, 134, 135, 148),
-            dividerColor: Color.fromARGB(255, 134, 135, 148),
-            labelStyle: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-            ),
-            dividerHeight: 1.1,
-            tabs: [
-              Tab(text: 'Today'),
-              Tab(text: 'Forecast'),
-              Tab(text: 'Precipitation'),
-              Tab(text: 'Radar Sun & Moon'),
+      length: 3,
+      child: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromRGBO(72, 75, 91, 1),
+              Color.fromRGBO(44, 45, 53, 1),
             ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
         ),
-        body: TabBarView(
-          children: [
-            TodayTap(snapshot: snapshot),
-            ForecastTap(snapshot: snapshot),
-            PrecipitationTap(snapshot: snapshot),
-            const Center(child: Text('Radar Sun & Moon')),
-          ],
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          drawer: const Drawer(),
+          appBar: AppBar(
+            iconTheme: const IconThemeData(color: Colors.white),
+            backgroundColor: const Color.fromRGBO(72, 75, 91, 1),
+            centerTitle: true,
+            title: const Text(
+              'My Location',
+              style: TextStyle(
+                fontSize: 26,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            actions: [
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SreachCity(),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.search),
+              ),
+            ],
+            bottom: const TapBarHomePageBuild(),
+          ),
+          body: BlocBuilder<GetWeatherCubit, GetWeatherState>(
+            builder: (context, state) {
+              if (state is GetWeatherInitial) {
+                return const TabBarView(
+                  children: [
+                    Center(
+                        child: Text("Enter a city",
+                            style: TextStyle(color: Colors.white))),
+                    Center(
+                        child: Text("Enter a city",
+                            style: TextStyle(color: Colors.white))),
+                    Center(
+                        child: Text("Enter a city",
+                            style: TextStyle(color: Colors.white))),
+                  ],
+                );
+              } else if (state is GetWeatherLoading) {
+                return const TabBarView(
+                  children: [
+                    Center(
+                        child: CircularProgressIndicator(color: Colors.amber)),
+                    Center(
+                        child: CircularProgressIndicator(color: Colors.amber)),
+                    Center(
+                        child: CircularProgressIndicator(color: Colors.amber)),
+                  ],
+                );
+              } else if (state is GetWeatherLoaded) {
+                return const TabBarView(
+                  children: [
+                    TodayTap(),
+                    ForecastTap(),
+                    PrecipitationTap(),
+                  ],
+                );
+              } else {
+                return const TabBarView(
+                  children: [
+                    ErrorMessageWidgetBuild(),
+                    ErrorMessageWidgetBuild(),
+                    ErrorMessageWidgetBuild(),
+                  ],
+                );
+              }
+            },
+          ),
         ),
       ),
     );

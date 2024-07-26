@@ -40,6 +40,7 @@ dependencies:
   syncfusion_flutter_gauges: ^26.1.42
   splash_screen_view: ^3.0.0
   syncfusion_flutter_charts: ^26.1.42
+  flutter_bloc: ^8.1.6
 
   
 
