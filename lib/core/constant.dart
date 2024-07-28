@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
 final List<Color> KgradientColoeList = [
   const Color.fromRGBO(21, 22, 26, 1),
   const Color.fromRGBO(21, 22, 26, 0.485),

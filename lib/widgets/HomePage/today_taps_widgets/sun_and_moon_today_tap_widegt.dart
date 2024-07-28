@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/methods/constant.dart';
+import 'package:weather_app/core/constant.dart';
 import 'package:weather_app/models/weather_model.dart';
 import 'package:weather_app/widgets/HomePage/today_taps_widgets/SunArcGauge_today_tap_widget.dart';
 

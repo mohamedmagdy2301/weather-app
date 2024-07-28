@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/methods/function.dart';
+import 'package:weather_app/core/function.dart';
 import 'package:weather_app/models/weather_model.dart';
 
-class IconAndTempTodayTapWidget extends StatelessWidget {
-  const IconAndTempTodayTapWidget({super.key, required this.snapshot});
+class TempTodayTapWidget extends StatelessWidget {
+  const TempTodayTapWidget({super.key, required this.snapshot});
   final WeatherModel snapshot;
   @override
   Widget build(BuildContext context) {
@@ -55,7 +55,8 @@ class IconAndTempTodayTapWidget extends StatelessWidget {
                     ],
                   ),
                   Positioned(
-                    bottom: 0,
+                    left: snapshot.conditionText.length <= 10 ? 10 : 0,
+                    bottom: snapshot.conditionText.length <= 10 ? 3 : 13,
                     child: Text(
                       snapshot.conditionText,
                       style: TextStyle(
@@ -63,7 +64,7 @@ class IconAndTempTodayTapWidget extends StatelessWidget {
                             ? 30
                             : snapshot.conditionText.length <= 10
                                 ? 20
-                                : 10,
+                                : 13,
                         fontWeight: FontWeight.w600,
                         color: const Color.fromARGB(167, 188, 188, 188),
                       ),

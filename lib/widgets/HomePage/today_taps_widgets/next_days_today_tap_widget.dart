@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/methods/constant.dart';
-import 'package:weather_app/methods/function.dart';
+import 'package:weather_app/core/constant.dart';
+import 'package:weather_app/core/function.dart';
 import 'package:weather_app/models/weather_model.dart';
 import 'package:weather_app/widgets/HomePage/today_taps_widgets/day_info_today_tap_row_widget.dart';
 

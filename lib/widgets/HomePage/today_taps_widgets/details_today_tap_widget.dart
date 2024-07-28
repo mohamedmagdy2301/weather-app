@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/methods/constant.dart';
+import 'package:weather_app/core/constant.dart';
 import 'package:weather_app/models/weather_model.dart';
 
 class DetailsTodayTapWidget extends StatelessWidget {

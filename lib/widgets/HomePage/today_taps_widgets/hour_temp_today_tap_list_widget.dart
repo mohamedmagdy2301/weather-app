@@ -84,11 +84,14 @@ class HourTempTodayTapCardWidget extends StatelessWidget {
                   : const Color.fromARGB(142, 255, 255, 255),
             ),
           ),
-          const Image(
-            image: AssetImage("assets/Group.png"),
-            height: 32,
-            width: 30,
-            fit: BoxFit.fill,
+          Image(
+            // image: AssetImage("assets/Group.png"),
+            image: NetworkImage(
+                "http:${snapshot.forecastDays[0].hourly[index].conditionIcon}"),
+            height: 42,
+            width: 100,
+            fit: BoxFit.cover,
+
             alignment: Alignment.center,
           ),
           Text(

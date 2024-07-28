@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/cubit/cubit/get_weather_cubit.dart';
-import 'package:weather_app/methods/function.dart';
+import 'package:weather_app/core/function.dart';
 
 class SreachCity extends StatelessWidget {
   const SreachCity({super.key});
