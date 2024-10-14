@@ -25,7 +25,7 @@ class AppBarHomePageBuild extends StatelessWidget
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => SreachCity(),
+                builder: (context) => const SreachCity(),
               ),
             );
           },

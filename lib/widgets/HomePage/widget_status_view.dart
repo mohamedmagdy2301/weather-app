@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:weather_app/screens/HomePage/forecast_taps.dart';
 import 'package:weather_app/screens/HomePage/precipitation_taps.dart';
 import 'package:weather_app/screens/HomePage/today_tap.dart';
-import 'package:weather_app/widgets/SearchPage/error_message_widget_build.dart';
 
 class SearchWeatherLoadedWidget extends StatelessWidget {
   const SearchWeatherLoadedWidget({

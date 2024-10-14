@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class TapBarHomePageBuild extends StatelessWidget
     implements PreferredSizeWidget {
-  const TapBarHomePageBuild({Key? key}) : super(key: key);
+  const TapBarHomePageBuild({super.key});
 
   @override
   TabBar build(BuildContext context) {
@@ -27,5 +27,6 @@ class TapBarHomePageBuild extends StatelessWidget
     );
   }
 
+  @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

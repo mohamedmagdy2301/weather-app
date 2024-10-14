@@ -61,9 +61,9 @@ class ThunderstormsForecastTapsWidgets extends StatelessWidget {
             ],
           ),
         ),
-        InfoThunderstormsPrecTapsRowWidgets(),
-        SizedBox(height: 10),
-        InfoThunderstormsPrecTapsRowWidgets(),
+        const InfoThunderstormsPrecTapsRowWidgets(),
+        const SizedBox(height: 10),
+        const InfoThunderstormsPrecTapsRowWidgets(),
       ],
     );
   }
