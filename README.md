@@ -80,7 +80,7 @@ Provides precipitation-related information, such as:
 
 | Today Screen | Today Screen | Forecast Screen | Precipitation Screen | Search Screen |
 |---|---|---|---|---|
-| ![Screenshot](assets/s12.png) | ![Screenshot](assets/s15png) | ![Screenshot](assets/s13.png)  |  ![Screenshot](assets/s14.png) |  ![Screenshot](assets/s16.png)|
+| ![Screenshot](assets/s12.png) | ![Screenshot](assets/s15.png) | ![Screenshot](assets/s13.png)  |  ![Screenshot](assets/s14.png) |  ![Screenshot](assets/s16.png)|
 
 ## Dependencies
 
