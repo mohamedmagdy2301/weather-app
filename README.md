@@ -74,7 +74,7 @@ Provides precipitation-related information, such as:
 
 ## Screenshots
 
-| Splash Screen 1 | Splash Screen 2 | Splash Screen 3 | Splash Screen 4 |
+| Onboarding Screen 1 | Onboarding Screen 2 | Onboarding Screen 3 | Onboarding Screen 4 |
 |---|---|---|---|
 | ![Screenshot](assets/s1.png) | ![Screenshot](assets/s2.png) | ![Screenshot](assets/s3.png)  |  ![Screenshot](assets/s4.png) |
 
