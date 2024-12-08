@@ -16,6 +16,16 @@ A Flutter-based weather application that provides real-time weather updates, for
 - **Graphical Charts**: Visual representation of weather data through charts for easier understanding.
 - **Intuitive UI**: A smooth, gradient-based user interface with a sleek and modern design.
 
+## Screenshots
+
+| Onboarding Screen 1 | Onboarding Screen 2 | Onboarding Screen 3 | Onboarding Screen 4 |
+|---|---|---|---|
+| ![Screenshot](assets/s1.png) | ![Screenshot](assets/s2.png) | ![Screenshot](assets/s3.png)  |  ![Screenshot](assets/s4.png) |
+
+| Today Screen | Today Screen | Forecast Screen | Precipitation Screen | Search Screen |
+|---|---|---|---|---|
+| ![Screenshot](assets/s12.png) | ![Screenshot](assets/s15.png) | ![Screenshot](assets/s13.png)  |  ![Screenshot](assets/s14.png) |  ![Screenshot](assets/s16.png)|
+
 ## Installation
 
 1. Clone the repository:
@@ -71,16 +81,6 @@ Provides precipitation-related information, such as:
 
 - Displays weather forecasts with visual data using charts.
 - Shows weekly weather forecast with temperature variations.
-
-## Screenshots
-
-| Onboarding Screen 1 | Onboarding Screen 2 | Onboarding Screen 3 | Onboarding Screen 4 |
-|---|---|---|---|
-| ![Screenshot](assets/s1.png) | ![Screenshot](assets/s2.png) | ![Screenshot](assets/s3.png)  |  ![Screenshot](assets/s4.png) |
-
-| Today Screen | Today Screen | Forecast Screen | Precipitation Screen | Search Screen |
-|---|---|---|---|---|
-| ![Screenshot](assets/s12.png) | ![Screenshot](assets/s15.png) | ![Screenshot](assets/s13.png)  |  ![Screenshot](assets/s14.png) |  ![Screenshot](assets/s16.png)|
 
 ## Dependencies
 
