@@ -16,6 +16,7 @@ A Flutter-based weather application that provides real-time weather updates, for
 - **Graphical Charts**: Visual representation of weather data through charts for easier understanding.
 - **Intuitive UI**: A smooth, gradient-based user interface with a sleek and modern design.
 
+
 ## Screenshots
 
 | Onboarding Screen 1 | Onboarding Screen 2 | Onboarding Screen 3 | Onboarding Screen 4 |
